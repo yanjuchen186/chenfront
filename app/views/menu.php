@@ -1,145 +1,214 @@
-<style type="text/css">
-.nav{margin-left:0;margin-bottom:20px;list-style:none;}
-.nav>li>a{display:block;}
-.nav>li>a:hover,.nav>li>a:focus{text-decoration:none;background-color:#eeeeee;}
-.nav>li>a>img{max-width:none;}
-.nav>.pull-right{float:right;}
-/*padding:3px 15px;*/
-.nav-header{display:block;font-size:17px;font-weight:bold;line-height:20px;color:#999999;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);text-transform:uppercase;}
-.nav li+.nav-header{margin-top:9px;}
-.nav-list{padding-left:15px;padding-right:15px;margin-bottom:0;}
-.nav-list>li>a,.nav-list .nav-header{margin-left:-15px;margin-right:-15px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
-.nav-list>li>a{padding:3px 15px;padding-left: 22px;}
-.nav-list>.active>a,.nav-list>.active>a:hover,.nav-list>.active>a:focus{color:#ffffff;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.2);background-color:#0088cc;}
-.nav-list [class^="icon-"],.nav-list [class*=" icon-"]{margin-right:2px;}
-.nav-list .divider{*width:100%;height:1px;margin:9px 1px;*margin:-5px 0 5px;overflow:hidden;background-color:#e5e5e5;border-bottom:1px solid #ffffff;}
-em{
-	margin-right:5px;
-}
-.sidebar{
-	background: #f5f5f5;
-	border-width: 0px 1px 0px 0px;
-	margin: 0px;
-}
-</style>
-<div class="col-xs-2 column sidebar" style="padding-left:2px;padding-top:4px;padding-right:0px;" >
-	<ul class="nav nav-list">
-
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-dashboard"></em>关于ETA
-		</li>
-		<li class="<?php if($CCName == 'BranchController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('branch/branch-index'); ?>">ETA公司</a>
-		</li>
-		<li class="<?php if($CCName == 'PartnerController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('partner/partner-index'); ?>">合作伙伴</a>
-		</li>
-		<li class="<?php if($CCName == 'CareerController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('career/career-index'); ?>">招聘信息</a>
-		</li>
-		
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-book"></em>内容管理
-		</li>
-		<li class="<?php if($CCName == 'NewsController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('news/news-index'); ?>">新闻列表</a>
-		</li>
-
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-th-list"></em>产品
-		</li>
-		<?php foreach ($productMenu as $key => $value) { ?>
-			<li class="<?php if($CCName == 'ProductController_'.$value['tid']){echo 'active';} ?>">
-				<a href="<?php echo $value['url']; ?>"><?php echo $value['name']; ?></a>
-			</li>
-		<?php } ?>
-
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-list-alt"></em>服务
-		</li>
-		<?php foreach ($serviceMenu as $key => $value) { ?>
-			<?php 
-				if(isset($serviceMenu[$key]['child']) && !empty($serviceMenu[$key]['child'])){
-			?>
-					<li class="">
-						<span style="margin-left:6px;"><?php echo $value['name']; ?></spam>
+<header id="header">
+	<div class="container">
+		<h1 class="logo">
+			<a href="index.html">
+				<img alt="Porto" width="156" height="74" data-sticky-width="82" data-sticky-height="40" src="img/eta_logo_10.png">
+			</a>
+		</h1>
+		<div class="search">
+			<form id="searchForm" action="page-search-results.html" method="get">
+				<div class="input-group">
+					<input type="text" class="form-control search" name="q" id="q" placeholder="Search...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="submit"><i class="icon icon-search"></i></button>
+					</span>
+				</div>
+			</form>
+		</div>
+		<nav>
+			<ul class="nav nav-pills nav-top">
+				<li>
+					<a href="about-us.html"><i class="icon icon-angle-right"></i>About Us</a>
+				</li>
+				<li>
+					<a href="contact-us.html"><i class="icon icon-angle-right"></i>Contact Us</a>
+				</li>
+				<li class="phone">
+					<span><i class="icon icon-phone"></i>(123) 456-7890</span>
+				</li>
+			</ul>
+		</nav>
+		<button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
+			<i class="icon icon-bars"></i>
+		</button>
+	</div>
+	<div class="navbar-collapse nav-main-collapse collapse">
+		<div class="container">
+			<ul class="social-icons">
+				<li class="facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook">Facebook</a></li>
+				<li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
+				<li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
+			</ul>
+			<nav class="nav-main mega-menu">
+				<ul class="nav nav-pills nav-main" id="mainMenu">
+					<li class="active">
+						<a  href="index.html">
+							首页
+						</a>
+						
 					</li>
-			<?php	
-					foreach ($serviceMenu[$key]['child'] as $kkey => $kvalue) {
-			?>
-						<li class="<?php if($CCName == 'ProductController_'.$kvalue['tid']){echo 'active';} ?>">
-							<a href="<?php echo $kvalue['url']; ?>" style="padding-left:30px;"><?php echo $kvalue['name']; ?></a>
-						</li>
-			<?php
-					}
-				}else{
-			?>
-					<li class="<?php if($CCName == 'ProductController_'.$value['tid']){echo 'active';} ?>">
-						<a href="<?php echo $value['url']; ?>"><?php echo $value['name']; ?></a>
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="about-us-basic.html">
+							关于eta
+							<i class="icon icon-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="about-us-basic.html">ETA公司</a></li>
+							<li><a href="about-parter.html">合作伙伴</a></li>
+							<li><a href="page-careers.html">加入ETA</a></li>
+						</ul>
 					</li>
-			<?php
-				}
-			?>			
-		<?php } ?>
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-download-alt"></em>支持与下载
-		</li>
-		<li class="<?php if($CCName == 'DownloadController_soft'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('download/soft-info/soft'); ?>">软件管理</a>
-		</li>
-		<li class="<?php if($CCName == 'DownloadController_doc'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('download/doc-info/doc'); ?>">手册管理</a>
-		</li>
+					<li>
+						<a href="blog-medium-image.html">新闻发布</a>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="product.html">
+							产品与服务
+							<i class="icon icon-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="">VPG</a></li>
+							<li><a href="">DYNAFORM</a></li>
+							<li><a href="">LS-DYNA</a></li>
+							<li><a href="">DTM</a></li>
+							<li><a href="">3DCS</a></li>
+							<li><a href="">Presys</a></li>
+							<li><a href="">咨询服务</a></li>
+							<li><a href="">培训服务</a></li>
+							<li><a href="">高性能计算</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="soft.html">
+							支持与下载
+							<i class="icon icon-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="soft.html">软件下载</a></li>
+							<li><a href="">手册下载</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="custom.html">行业客户</a>
+					</li>
+					
+					<li class="dropdown mega-menu-item mega-menu-signin signin" id="headerAccount">
+						<a class="dropdown-toggle" href="page-login.html">
+							<i class="icon icon-user"></i> 登录
+							<i class="icon icon-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<div class="mega-menu-content">
+									<div class="row">
+										<div class="col-md-12">
 
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-tower"></em>行业客户
-		</li>
-		<?php foreach ($customerMenu as $key => $value) { ?>
-			<li class="<?php if($CCName == 'CustomerController_'.$value['tid']){echo 'active';} ?>">
-				<a href="<?php echo $value['url']; ?>"><?php echo $value['name']; ?></a>
-			</li>
-		<?php } ?>
-		
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-user"></em>用户管理
-		</li>
-		<li class="<?php if($CCName == 'UserController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('user/user-index'); ?>">用户列表</a>
-		</li>
-		<li class="">
-			<a href="javascript:void(0);">我的信息</a>
-		</li>
-		<li class="">
-			<a href="javascript:void(0);">我的密码</a>
-		</li>
-		<li class="nav-header">
-			<em class="glyphicon glyphicon-cog"></em>分类配置
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_4'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/4'); ?>">产品配置</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_10'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/10'); ?>">产品属性</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_6'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/6'); ?>">服务配置</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_11'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/11'); ?>">服务属性</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_5'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/5'); ?>">客户配置</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_8'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/8'); ?>">软件类型</a>
-		</li>
-		<li class="<?php if($CCName == 'TaxonomyController_9'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/taxonomy-index/9'); ?>">文档类型</a>
-		</li>
-		
-		<li class="<?php if($CCName == 'TaxonomyController'){echo 'active';} ?>">
-			<a href="<?php echo URL::to('taxonomy/vocabulary-index'); ?>">词根</a>
-		</li>
-		
-	</ul>
-</div>
+											<div class="signin-form">
+
+												<span class="mega-menu-sub-title">登录</span>
+
+												<form action="" id="" type="post">
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>邮箱</label>
+																<input type="text" value="" class="form-control input-lg">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<a class="pull-right" id="headerRecover" href="#">(忘记密码?)</a>
+																<label>密码</label>
+																<input type="password" value="" class="form-control input-lg">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<span class="remember-box checkbox">
+																<label for="rememberme">
+																	<input type="checkbox" id="rememberme" name="rememberme">记住我
+																</label>
+															</span>
+														</div>
+														<div class="col-md-6">
+															<input type="submit" value="登录" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+														</div>
+													</div>
+												</form>
+
+												<p class="sign-up-info">还不是eta会员? <a href="#" id="headerSignUp">立刻注册!</a></p>
+
+											</div>
+
+											<div class="signup-form">
+												<span class="mega-menu-sub-title">Create Account</span>
+
+												<form action="" id="" type="post">
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>E-mail Address</label>
+																<input type="text" value="" class="form-control input-lg">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-6">
+																<label>Password</label>
+																<input type="password" value="" class="form-control input-lg">
+															</div>
+															<div class="col-md-6">
+																<label>Re-enter Password</label>
+																<input type="password" value="" class="form-control input-lg">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<input type="submit" value="Create Account" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+														</div>
+													</div>
+												</form>
+
+												<p class="log-in-info">Already have an account? <a href="#" id="headerSignIn">Log In!</a></p>
+											</div>
+
+											<div class="recover-form">
+												<span class="mega-menu-sub-title">Reset My Password</span>
+												<p>Complete the form below to receive an email with the authorization code needed to reset your password.</p>
+
+												<form action="" id="" type="post">
+													<div class="row">
+														<div class="form-group">
+															<div class="col-md-12">
+																<label>E-mail Address</label>
+																<input type="text" value="" class="form-control input-lg">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-12">
+															<input type="submit" value="Submit" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+														</div>
+													</div>
+												</form>
+
+												<p class="log-in-info">Already have an account? <a href="#" id="headerRecoverCancel">Log In!</a></p>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

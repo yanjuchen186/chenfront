@@ -1,68 +1,58 @@
-<style type="text/css">
-.top-header{
-	color:#ffffff;
-	background: #0088cc;
-	line-height: 22px;
-	margin-right: 0px;
-}
+<head>
 
-.top-header a{
-	color:#ffffff;
-	text-decoration: none;
-}
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<title><?php echo $webTitle;  ?></title>		
+		<meta name="keywords" content="HTML5 Template" />
+		<meta name="description" content="Porto - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
 
- .navbar-brand {
-	font-size: 24px;
-	text-shadow: none;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.middle-header{
-	color:#ffffff;
-	background: #f5f5f5;
-	margin-right: 0px;
-}
-</style>
+		<!-- Web Fonts  -->
+		<!-- <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css"> -->
 
+		<!-- Libs CSS -->
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+		<?php echo HTML::style('vendor/bootstrap/css/bootstrap.css'); ?>
+		<?php echo HTML::style('vendor/font-awesome/css/font-awesome.css'); ?>
+		<?php echo HTML::style('vendor/owl-carousel/owl.carousel.css'); ?>
+		<?php echo HTML::style('vendor/owl-carousel/owl.theme.css'); ?>
+		<?php echo HTML::style('vendor/magnific-popup/magnific-popup.css'); ?>
+		<?php echo HTML::style('vendor/isotope/jquery.isotope.css'); ?>
+		<?php echo HTML::style('vendor/mediaelement/mediaelementplayer.css'); ?>
 
+		<!-- Theme CSS -->
+		<?php echo HTML::style('css/theme.css'); ?>
+		<?php echo HTML::style('css/theme-elements.css'); ?>
+		<?php echo HTML::style('css/theme-blog.css'); ?>
+		<?php echo HTML::style('css/theme-shop.css'); ?>
+		<?php echo HTML::style('css/theme-animate.css'); ?>
 
+		<!-- Current Page CSS -->
+		<?php echo HTML::style('vendor/circle-flip-slideshow/css/component.css'); ?>
+		<?php echo HTML::style('vendor/nivo-slider/nivo-slider.css'); ?>
+		<?php echo HTML::style('vendor/nivo-slider/themes/default/default.css'); ?>
 
-<div class="row clearfix top-header">
-	<div class="col-xs-4 column">
-	</div>
-	<div class="col-xs-8 column" >
-		<div style="float:right;">
-			<span><a href="#">前台首页</a></span>
-			<span><a href="#">修改密码</a></span>
-			<span><a href="<?php echo URL::current();  ?>">刷新</a></span>
-			<span><a href="<?php echo URL::to('dealLoginOut');  ?>">退出系统</a></span>
-		</div>
-	</div>
-</div>
-<div class="row clearfix middle-header">
-	<div class="col-xs-4 column ">
-		<a href="#" class="navbar-brand">
-			<small>
-				<em class="glyphicon glyphicon-home"></em>
-				ETA Admin
-			</small>
-		</a>
-	</div>
-	<div class="col-xs-8 column" style="padding-right:0px;">
-		<div class="btn-group" style="margin-top:8px;float:right;">
-			 <a class="btn btn-default" href="">
-			 	<em class="glyphicon glyphicon-user"></em> 用户信息
-			 </a> 
-			 <a class="btn btn-default" href="<?php echo URL::to('news/news-add'); ?>">
-			 	<em class='glyphicon glyphicon-plus'></em> 添加新闻
-			 </a> 
-			 <a class="btn btn-default" href="<?php echo URL::to('taxonomy/taxonomy-add/4'); ?>">
-			 	<em class='glyphicon glyphicon-plus'></em> 添加产品
-			 </a> 
-			 <a class="btn btn-default" href="<?php echo URL::to('taxonomy/taxonomy-add/6'); ?>">
-			 	<em class='glyphicon glyphicon-plus'></em> 添加服务
-			</a>
-		</div>
-	</div>
-</div>
+		<!-- Responsive CSS -->
+		<?php echo HTML::style('css/theme-responsive.css'); ?>
+
+		<!-- Skin CSS -->
+		<?php echo HTML::style('css/skins/default.css'); ?>
+
+		<!-- Custom CSS -->
+		<?php echo HTML::style('css/custom.css'); ?>
+
+		<!-- Head Libs -->
+		<?php echo HTML::script('vendor/modernizr.js'); ?>
+
+		<!--[if IE]>
+			<link rel="stylesheet" href="css/ie.css">
+		<![endif]-->
+
+		<!--[if lte IE 8]>
+			<script src="vendor/respond.js"></script>
+		<![endif]-->
+
+	</head>

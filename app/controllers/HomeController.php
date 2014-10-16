@@ -15,6 +15,10 @@ class HomeController extends BaseController {
 	|
 	*/
 
+	public function getIndex(){
+		return View::make('Home', $this->cVariable);
+	}
+
 	public function showWelcome()
 	{
 		return View::make('hello');
