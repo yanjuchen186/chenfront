@@ -19,3 +19,5 @@
 Route::controller("home", "HomeController");
 
 Route::controller("customer", "CustomerController");
+
+Route::controller("product", "ProductController");

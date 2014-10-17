@@ -17,9 +17,9 @@ class CustomerController extends BaseController {
 	public function getIndex()
 	{
 		$termsItem = $this->customer->getCustomerList();
-		echo "<pre>";
-		print_r($termsItem);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($termsItem);
+		// echo "</pre>";
 		$this->cVariable['termsItem'] = $termsItem;
 
 		return View::make('Customer.CustomerIndex', $this->cVariable);

@@ -276,7 +276,7 @@
 			<?php echo HTML::script('vendor/nivo-slider/jquery.nivo.slider.js'); ?>
 			<?php echo HTML::script('js/views/view.home.js'); ?>
 
-
+		</div>
 	</body>
 </html>
 			
