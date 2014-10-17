@@ -1,6 +1,22 @@
 <?php
 class Product extends Eloquent{
 
+	/**
+	 * 获取产品信息
+	 */
+	public function getProductBasicInfo($tid){
+		$sql =" SELECT
+					t1.*,
+					t2.name as psName
+				FROM
+					eta_product t1
+				LEFT JOIN eta_taxonomy_term_data t2 ON t1.tid = t2.tid
+				WHERE t1.tid = {$tid}";
+		$result = DB::select($sql);
+
+		return $result;
+	}
+
 	public function getCategory(){
 		//产品简介
 		$productItem = $this->getPSTerm(4, 'product');
@@ -22,7 +38,7 @@ class Product extends Eloquent{
 		   	   if($value->pid == 0){
 		   	  		$termItem[] = array(
 				   	  	'name' => $value->name,
-				   	  	'url' => URL::to('product/product-info/'.$type.'/'.$value->tid),
+				   	  	'url' => URL::to('product/product-info/'.$type.'/'.$value->tid.'/'.$vid),
 				   	  	'enName' => $value->enName,
 				   	  	'description' => $value->description,
 				   	  	'sort' => $value->weight,
@@ -35,6 +51,66 @@ class Product extends Eloquent{
 		}
 
 		return $termItem;
+	}
+
+	public function getProductDetailInfos($tid, $vid){
+		//获取产品与服务的属性
+		$propertyData = $this->getPropertyData($vid);
+
+		//获取产品属性详细信息
+		$data = DB::table('product_info')
+				->where('tid', '=', $tid)
+				->orderBy('sort', 'desc')
+				->get();
+		// 		echo "<pre>";
+		// var_dump($data[0]);
+		// echo "</pre>";
+		if(!empty($propertyData)){
+			foreach ($propertyData as $key => $value) {
+				foreach ($data as $kkey => $kvalue) {
+					if($kvalue->type == $value['tid']){
+						$propertyData[$key]['child'][] = (array)$data[$kkey];
+					}
+				}
+			}
+		}
+
+		// $newData = array();
+		// if(!empty($data)){
+		// 	foreach ($data as $key => $value) {
+		// 		$newData[$value->type][] = $data[$key];
+		// 	}
+		// }
+		return $propertyData;
+	}
+
+	public function getPropertyData($vid){
+		$taxonomy = new Taxonomy;
+		//获取当前分类的属性
+		$propetyData = array();
+		$propertyMenu = array();
+		if($vid == 4){
+		   //产品属性
+		   $propetyData = $taxonomy->getTermsData(10);
+		}else if($vid == 6){
+		   //服务属性
+		   $propetyData = $taxonomy->getTermsData(11);
+		}
+		if(!empty($propetyData)){
+			foreach ($propetyData as $key => $value) {
+				if($value->pid == 0){
+					$propertyMenu[$value->tid]['name'] = $value->name;
+					$propertyMenu[$value->tid]['sort'] = $value->weight;
+					$propertyMenu[$value->tid]['tid'] = $value->tid;
+					$propertyMenu[$value->tid]['child'] = array();
+				}
+			}
+
+			$propertyMenu = $this->KKSort($propertyMenu);
+			
+		}
+
+		return $propertyMenu;
 	}
 
 	/**

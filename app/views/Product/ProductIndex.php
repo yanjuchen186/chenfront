@@ -60,7 +60,7 @@
 								<ul class="nav nav-list primary push-bottom">
 									<?php foreach ($productItem as $key => $value) { ?>
 										<li>
-											<a title="<?php echo $value['url']; ?>" href="<?php echo $value['url']; ?>">
+											<a title="<?php echo $value['name']; ?>" href="<?php echo $value['url']; ?>">
 												<?php echo $value['name']; ?>
 											</a>
 										</li>

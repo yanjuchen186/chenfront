@@ -21,8 +21,23 @@ class ProductController extends BaseController {
 		return View::make('Product.ProductIndex', $this->cVariable);
 	}
 
-	public function getProductInfo($tid){
+	public function getProductInfo($type, $tid, $vid){
+		//获取当前产品或服务详细信息
+		$this->cVariable['currInfo'] = $this->product->getProductBasicInfo($tid);
 
+		// var_dump($this->cVariable['currInfo']);
+
+		if($type == "product"){
+			$detailInfo = $this->product->getProductDetailInfos($tid, $vid);
+
+			$this->cVariable['detailData'] = $detailInfo;
+
+			return View::make('Product.ProductInfo', $this->cVariable);
+		}else if($type == "service"){
+			return View::make('Product.ServiceInfo', $this->cVariable);
+		}
+
+		
 	}
 
 }
