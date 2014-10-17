@@ -100,10 +100,7 @@
 		<?php echo HTML::script('js/theme.plugins.js'); ?>
 		<?php echo HTML::script('js/theme.js'); ?>
 
-		<!-- Current Page JS -->
-		<?php echo HTML::script('vendor/circle-flip-slideshow/js/jquery.flipshow.js'); ?>
-		<?php echo HTML::script('vendor/nivo-slider/jquery.nivo.slider.js'); ?>
-		<?php echo HTML::script('js/views/view.home.js'); ?>
+		
 		
 		<!-- Custom JS -->
 		<?php echo HTML::script('js/custom.js'); ?>
@@ -124,5 +121,3 @@
 		</script>
 		 -->
 
-	</body>
-</html>

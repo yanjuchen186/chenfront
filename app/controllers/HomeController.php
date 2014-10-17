@@ -16,6 +16,7 @@ class HomeController extends BaseController {
 	*/
 
 	public function getIndex(){
+		
 		return View::make('Home', $this->cVariable);
 	}
 

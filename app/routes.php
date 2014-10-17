@@ -17,3 +17,5 @@
 // });
 
 Route::controller("home", "HomeController");
+
+Route::controller("customer", "CustomerController");

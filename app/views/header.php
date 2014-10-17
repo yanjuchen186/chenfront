@@ -30,10 +30,7 @@
 		<?php echo HTML::style('css/theme-shop.css'); ?>
 		<?php echo HTML::style('css/theme-animate.css'); ?>
 
-		<!-- Current Page CSS -->
-		<?php echo HTML::style('vendor/circle-flip-slideshow/css/component.css'); ?>
-		<?php echo HTML::style('vendor/nivo-slider/nivo-slider.css'); ?>
-		<?php echo HTML::style('vendor/nivo-slider/themes/default/default.css'); ?>
+		
 
 		<!-- Responsive CSS -->
 		<?php echo HTML::style('css/theme-responsive.css'); ?>

@@ -74,5 +74,29 @@ class BaseController extends Controller {
 		return Redirect::to("career/career-index");
 	}
 
+	protected function initCurrentJs($js){
+		$jsStr = "";
+		if(is_array($js)){
+		   foreach ($js as $key => $value) {
+		   		$jsStr .= HTML::script($value);
+		   }
+		}else{
+			$jsStr .= HTML::script($js);
+		}
+		return $jsStr;
+	}
+
+	protected function initCurrentCss($css){
+		$cssStr = "";
+		if(is_array($css)){
+		   foreach ($css as $key => $value) {
+		   		$cssStr .= HTML::style($value);
+		   }
+		}else{
+			$cssStr .= HTML::style($css);
+		}
+		return $cssStr;
+	}
+
 	
 }

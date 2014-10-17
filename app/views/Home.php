@@ -5,10 +5,14 @@
 <!-- header html -->
 <?php echo $header; ?>	
 	<body>
-		<!-- menu html -->
-		<?php echo $menu; ?>	
-		<div class="body">
+	<!-- Current Page CSS -->
+	<?php echo HTML::style('vendor/circle-flip-slideshow/css/component.css'); ?>
+	<?php echo HTML::style('vendor/nivo-slider/nivo-slider.css'); ?>
+	<?php echo HTML::style('vendor/nivo-slider/themes/default/default.css'); ?>
 			
+		<div class="body">
+			<!-- menu html -->
+			<?php echo $menu; ?>
 
 			<div role="main" class="main">
 
@@ -264,6 +268,15 @@
 					</section>
 				</div>
 			</div>
+
 			<!-- footer html-->
 			<?php echo $footer; ?>
+			<!-- Current Page JS -->
+			<?php echo HTML::script('vendor/circle-flip-slideshow/js/jquery.flipshow.js'); ?>
+			<?php echo HTML::script('vendor/nivo-slider/jquery.nivo.slider.js'); ?>
+			<?php echo HTML::script('js/views/view.home.js'); ?>
+
+
+	</body>
+</html>
 			
