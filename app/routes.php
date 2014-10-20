@@ -23,3 +23,7 @@ Route::controller("customer", "CustomerController");
 Route::controller("product", "ProductController");
 
 Route::controller("company", "CompanyController");
+
+Route::controller("partner", "PartnerController");
+
+Route::controller("career", "CareerController");
