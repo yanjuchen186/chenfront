@@ -1,6 +1,12 @@
 <?php
 
 class HomeController extends BaseController {
+	private $home;
+
+	public function __construct(){
+		parent::__construct();
+		$this->home = new Home;
+	}
 
 	/*
 	|--------------------------------------------------------------------------
@@ -16,8 +22,15 @@ class HomeController extends BaseController {
 	*/
 
 	public function getIndex(){
+		// var_dump(file_exists("http://192.168.2.70/eta/public/upload/slide/20141021035916_slide-v1.png"));
+		//幻灯片
+		$this->cVariable['bannerData'] = $this->home->getBannerData();
+
+		// echo "<pre>";
+		// print_r($this->cVariable['bannerData']);
+		// echo "</pre>";
 		
-		return View::make('Home', $this->cVariable);
+		return View::make('HomeIndex', $this->cVariable);
 	}
 
 	public function showWelcome()
