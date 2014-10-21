@@ -45,11 +45,11 @@
 		<?php echo HTML::script('vendor/modernizr.js'); ?>
 
 		<!--[if IE]>
-			<link rel="stylesheet" href="css/ie.css">
+			<?php echo HTML::style('css/ie.css'); ?>
 		<![endif]-->
 
 		<!--[if lte IE 8]>
-			<script src="vendor/respond.js"></script>
+			<?php echo HTML::script('vendor/respond.js'); ?>
 		<![endif]-->
 
 	</head>
