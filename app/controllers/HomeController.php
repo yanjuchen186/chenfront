@@ -34,9 +34,9 @@ class HomeController extends BaseController {
 
 		//新闻推荐
 		$this->cVariable['newsData'] = $this->home->getNewsData();
-		echo "<pre>";
-		print_r($this->cVariable['newsData']);
-		echo "</pre>";
+		// echo "<pre>";
+		// print_r($this->cVariable['newsData']);
+		// echo "</pre>";
 		
 		return View::make('HomeIndex', $this->cVariable);
 	}

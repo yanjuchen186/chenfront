@@ -18,6 +18,7 @@ class BaseController extends Controller {
 		//检查登录情况
 		//$this->initLogin();
 		$this->initParam();
+		$this->initMenu();
 		$this->initTemplate();		
 		
 	}
@@ -26,16 +27,27 @@ class BaseController extends Controller {
 		$this->cVariable['webTitle'] = 'ETA';
 	}
 
-	private function initLogin(){
-		if (Auth::check()){
-		    // The user is logged in...
-		    $userInfo = Session::get('userInfo');
-		    //var_dump($userInfo);
-		    $this->cVariable['userInfo'] = unserialize($userInfo);
-		}else{
-			return Redirect::guest('login');
+	public function initMenu(){
+		$CCName = Route::currentRouteAction();
+		$CCName = substr($CCName, 0, stripos($CCName, '@', 0));
+		if(in_array($CCName, array('CareerController', 'PartnerController'))){
+			$CCName = "CompanyController";
 		}
+		$this->cVariable['CCName'] = $CCName;
+		$product = new Product;
+		$this->cVariable['productItem'] = $product->getCategory();
 	}
+
+	// private function initLogin(){
+	// 	if (Auth::check()){
+	// 	    // The user is logged in...
+	// 	    $userInfo = Session::get('userInfo');
+	// 	    //var_dump($userInfo);
+	// 	    $this->cVariable['userInfo'] = unserialize($userInfo);
+	// 	}else{
+	// 		return Redirect::guest('login');
+	// 	}
+	// }
 
 	/**
 	 * 初始化模版

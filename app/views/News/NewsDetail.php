@@ -2,7 +2,7 @@
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
-	<?php echo $header; ?>	
+	<?php echo $header; ?>
 	<body>
 
 		<div class="body">
@@ -21,11 +21,7 @@
 								</ul>
 							</div>
 						</div>
-						<!-- <div class="row">
-							<div class="col-md-12">
-								<h2>Medium Image</h2>
-							</div>
-						</div> -->
+						
 					</div>
 				</section>
 
@@ -33,54 +29,44 @@
 
 					<div class="row">
 						<div class="col-md-9">
-							<div class="blog-posts">
-								<?php foreach ($newsData as $key => $value) { ?>
-									<article class="post post-medium">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="post-image">
-													<div class="owl-carousel" >
-														<div>
-															<div class="img-thumbnail">
-																<img class="img-responsive" src="<?php echo $value['stickyUrl'];?>" alt="">
-															</div>
-														</div>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-md-7">
+							<div class="blog-posts single-post">
 
-												<div class="post-content">
+								<article class="post post-large blog-single-post">
+									
 
-													<h2><a href="<?php echo $value['url']; ?>"><?php echo $value['title']; ?></a></h2>
-													<?php echo $value['overview']; ?>
+									<div class="post-date">
+										<span class="day"><?php echo  $currentNewsData[0]->day; ?></span>
+										<span class="month"><?php echo $currentNewsData[0]->month; ?></span>
+									</div>
 
-												</div>
-											</div>
+									<div class="post-content">
 
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<div class="post-meta">
-													<span><i class="icon icon-calendar"></i><?php echo $value['dateType']; ?></span>
-													<span><i class="icon icon-user"></i> By <a href="#"><?php echo $value['userName']; ?></a> </span>
-													
-													<a href="<?php echo $value['url']; ?>" class="btn btn-xs btn-primary pull-right">Read more...</a>
-												</div>
-											</div>
+										<h2><a href="<?php echo $currentNewsData[0]->url; ?>"><?php echo $currentNewsData[0]->title; ?></a></h2>
+
+										<div class="post-meta">
+											<span><i class="icon icon-user"></i> By <a href="javascript:void(0);"><?php echo $currentNewsData[0]->userName; ?></a> </span>
+											
 										</div>
 
-									</article>
-								<?php } ?>
+										<?php echo $currentNewsData[0]->content; ?>
 
-								<ul class="pagination pagination-lg pull-right">
-									<li><a href="#">«</a></li>
-									<li class="active"><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">»</a></li>
-								</ul>
+
+										<div class="post-block post-share">
+											<h3><i class="icon icon-share"></i>Share this post</h3>
+
+											<!-- AddThis Button BEGIN -->
+											<div class="addthis_toolbox addthis_default_style ">
+												<a class="addthis_button_facebook_like" ></a>
+												<a class="addthis_button_tweet"></a>
+												<a class="addthis_button_pinterest_pinit"></a>
+												<a class="addthis_counter addthis_pill_style"></a>
+											</div>
+											
+											<!-- AddThis Button END -->
+
+										</div>
+									</div>
+								</article>
 
 							</div>
 						</div>
@@ -102,9 +88,9 @@
 								<h4>Categories</h4>
 								<ul class="nav nav-list primary push-bottom">
 									<li><a href="#">Design</a></li>
-									<li><a href="#">VPG</a></li>
-									<li><a href="#">3DCS</a></li>
-									<li><a href="#">培训</a></li>
+									<li><a href="#">Photos</a></li>
+									<li><a href="#">Videos</a></li>
+									<li><a href="#">Lifestyle</a></li>
 									<li><a href="#">Technology</a></li>
 								</ul>
 
@@ -125,7 +111,7 @@
 														</div>
 													</div>
 													<div class="post-info">
-														<a href="blog-single.html">2014年公开课培训安排</a>
+														<a href="blog-single.html">Nullam Vitae Nibh Un Odiosters</a>
 														<div class="post-meta">
 															 Jan 10, 2013
 														</div>
@@ -140,7 +126,7 @@
 														</div>
 													</div>
 													<div class="post-info">
-														<a href="blog-single.html">2014年公开课培训安排</a>
+														<a href="blog-single.html">Vitae Nibh Un Odiosters</a>
 														<div class="post-meta">
 															 Jan 10, 2013
 														</div>
@@ -155,7 +141,7 @@
 														</div>
 													</div>
 													<div class="post-info">
-														<a href="blog-single.html">2014年公开课培训安排</a>
+														<a href="blog-single.html">Odiosters Nullam Vitae</a>
 														<div class="post-meta">
 															 Jan 10, 2013
 														</div>
@@ -195,7 +181,21 @@
 														</div>
 													</div>
 												</li>
-												
+												<li>
+													<div class="post-image">
+														<div class="img-thumbnail">
+															<a href="blog-single.html">
+																<img src="img/blog/blog-thumb-1.jpg" alt="">
+															</a>
+														</div>
+													</div>
+													<div class="post-info">
+														<a href="blog-single.html">Nullam Vitae Nibh Un Odiosters</a>
+														<div class="post-meta">
+															 Jan 10, 2013
+														</div>
+													</div>
+												</li>
 											</ul>
 										</div>
 									</div>

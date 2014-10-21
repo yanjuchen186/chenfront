@@ -18,130 +18,49 @@
 
 							<div class="row">
 								<div class="col-md-12">
-									<h4><strong><?php if(isset($currInfo[0]->psName)){echo $currInfo[0]->psName;} ?></strong></h4>
-									<hr class="tall">
-									<?php if(isset($currInfo[0]->productInfo)){echo $currInfo[0]->productInfo;} ?>
+									<h4><strong><?php if(isset($currInfo[0]->name)){echo $currInfo[0]->name;} ?></strong></h4>
+									
+									<?php if(isset($currInfo[0]->description)){echo $currInfo[0]->description;} ?>
 								</div>
 							</div>
-
-							<div class="row">
-								<div class="col-md-12">
-									<div class="tabs tabs-product">
-										<ul class="nav nav-tabs">
-											<li class="active"><a href="#productDescription" data-toggle="tab">功能介绍</a></li>
-											<li><a href="#productInfo" data-toggle="tab">行业应用 </a></li>
-											<li><a href="#productReviews" data-toggle="tab">用户案例</a></li>
-										</ul>
-										<div class="tab-content">
-											<div class="tab-pane active" id="productDescription">
-													<section class="toggle ">
-														<label>	VPG功能特点</label>
-														<div class="toggle-content" style="margin-left:15px;">
-															
-<p>VPG/PrePost它的前身是FEMB（LS-DYNA软件的指定前处理器），随着VPG技术的发展，ETA公司对VPG/Prepost投入了很大的精力，开发和完善了很多的新功能，整合成为VPG/PrePost模块，具体特点如下：</p>
-<p>支持多种CAD数据格式</p>
-<p>现在支持的CAD数据格式有：IGES, VDA, DXF, CATIA, STEP, UG 等等。</p>
-<p>百分之百支持LS-DYNA所有的关键字</p>
-<p>对于著名显式动力分析软件LS-DYNA的关键字，VPG/Prepost 100%支持LS-DYNA所有关键字，用户可以很方便的进行图形界面输入，无需进行文本编辑，并且每一个关键字的参数都有简要的解释。</p>
-<p>强大的网格生成功能</p>
-<p>VPG/PrePost能自动生成四边形网格，花时少，网格的质量控制方便（三角形网格应严格控制在一定的百分比内）。同时，VPG/Prepost还能自动生成四面体、五面体及六面体的立体网格。	</p>	
-															
-															
-														</div>
-													</section>
-													<section class="toggle ">
-														<label>	VPG_Prepost模块介绍</label>
-														<div class="toggle-content" style="margin-left:15px;">
-																
-															
-															
-														</div>
-													</section>
-													<section class="toggle ">
-														<label>	LS-DYNA 技术支持工程师</label>
-														<div class="toggle-content" style="margin-left:15px;">
-																
-															
-															
-														</div>
-													</section>
-													<section class="toggle ">
-														<label>	VPG_Structure模块介绍</label>
-														<div class="toggle-content" style="margin-left:15px;">
-																
-															
-															
-														</div>
-													</section>
-													<section class="toggle ">
-														<label>	VPG_Safety模块介绍</label>
-														<div class="toggle-content" style="margin-left:15px;">
-																
-															
-															
-														</div>
-													</section>
-											</div>
-											<div class="tab-pane" id="productInfo">
-												<section class="toggle ">
-													<label>	VPG/LS-DYNA在汽车行业的应用</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
-												<section class="toggle ">
-													<label>	VPG/LS-DYNA在航空航天领域的应用</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
-												<section class="toggle ">
-													<label>	VPG/LS-DYNA在军工领域的应用</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
-											</div>
-											<div class="tab-pane" id="productReviews">
-												<section class="toggle ">
-													<label>	VPG假人应用案例</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
-												<section class="toggle ">
-													<label>	VPG_Prepost应用案例</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
-												<section class="toggle ">
-													<label>	VPG_Structure应用案例</label>
-													<div class="toggle-content" style="margin-left:15px;">
-															
-														
-														
-													</div>
-												</section>
+							<?php foreach ($sData as $key => $value) { ?>
+								<hr class="tall">
+								<div class="row">
+									<div class="col-md-12">
+										<h5><?php echo $value['name']; ?></h5>
+										<?php echo $value['productInfo']; ?>
+										<div class="tabs tabs-product">
+											<ul class="nav nav-tabs">
+												<?php foreach ($value['termChild'] as $tcKey => $tcValue) { ?>
+													<li class="<?php if($tcKey == 0){echo 'active';} ?>">
+														<a href="#nav-tabs-<?php echo $tcValue['tid'] . '_' . $value['tid']; ?>" data-toggle="tab"><?php echo $tcValue['name']; ?></a>
+													</li>
+												<?php } ?>
 												
 												
+											</ul>
+											<div class="tab-content">
+												<?php foreach ($value['termChild'] as $tcKey => $tcValue) { ?>
+													<div class="tab-pane <?php if($tcKey == 0){echo 'active';} ?>" id="nav-tabs-<?php echo $tcValue['tid']. '_' . $value['tid']; ?>">
+														<?php foreach ($tcValue['child'] as $kkey => $kvalue) { ?>
+															<section class="toggle ">
+																<label><?php echo $kvalue['infoName']; ?></label>
+																<div class="toggle-content" style="margin-left:15px;">
+																	
+																	<?php echo $kvalue['infoContent']; ?>
+													
+																</div>
+															</section>
+														<?php } ?>
+													</div>
+												<?php } ?>
+			
 											</div>
-											
 										</div>
 									</div>
 								</div>
-							</div>
 
+							<?php } ?>
 
 						</div>
 						<div class="col-md-3">

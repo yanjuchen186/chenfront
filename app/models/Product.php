@@ -53,6 +53,27 @@ class Product extends Eloquent{
 		return $termItem;
 	}
 
+
+	//获取服务有子类情况下的属性
+	public function getServiceAllData($childData){
+		$newData = array();
+		foreach ($childData as $key => $value) {
+			$newData[] = array(
+				'tid' => $value->tid,
+				'name' => $value->name,
+				'productInfo' => $this->getProductInfo($value->tid),
+				'termChild' => $this->getProductDetailInfos($value->tid, $value->vid)
+			);
+		}
+
+		return $newData;
+	}
+
+	//直接获取产品或服务的简介信息
+	public function getProductInfo($tid){
+		return DB::table('product')->where('tid', $tid)->pluck('productInfo');
+	}
+
 	public function getProductDetailInfos($tid, $vid){
 		//获取产品与服务的属性
 		$propertyData = $this->getPropertyData($vid);

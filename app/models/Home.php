@@ -168,7 +168,7 @@ class Home extends Eloquent{
 				$newsData[] = array(
 					'title' => $value->title,
 					'overview' => $value->overview ? $this->utf8Substr($value->overview, 0, 120) : $this->utf8Substr($content, 0, 120),
-					'url' => '',
+					'url' => URL::to("news/news-detail/".$value->nid),
 					'day' => date('d', strtotime($value->publishedTime ? $value->publishedTime : $value->created_at)),
 					'month' => date('m', strtotime($value->publishedTime ? $value->publishedTime : $value->created_at))
 				);

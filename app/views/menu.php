@@ -1,8 +1,8 @@
 <header id="header">
 	<div class="container">
 		<h1 class="logo">
-			<a href="index.html">
-				<img alt="Porto" width="156" height="74" data-sticky-width="82" data-sticky-height="40" src="img/eta_logo_10.png">
+			<a href="<?php echo URL::to('home/index'); ?>">
+				<img alt="Porto" width="156" height="74" data-sticky-width="82" data-sticky-height="40" src="<?php echo HTML::imageUrl('upload/default/eta_logo_10.png'); ?>">
 			</a>
 		</h1>
 		<div class="search">
@@ -41,55 +41,50 @@
 			</ul>
 			<nav class="nav-main mega-menu">
 				<ul class="nav nav-pills nav-main" id="mainMenu">
-					<li class="active">
-						<a  href="index.html">
+					<li class="<?php if($CCName == 'HomeController'){echo 'active';} ?>">
+						<a  href="<?php echo URL::to('home/index'); ?>">
 							首页
 						</a>
 						
 					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" href="about-us-basic.html">
+					<li class="dropdown <?php if($CCName == 'CompanyController'){echo 'active';} ?>">
+						<a class="dropdown-toggle" href="<?php echo URL::to('company/index'); ?>">
 							关于eta
 							<i class="icon icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="about-us-basic.html">ETA公司</a></li>
-							<li><a href="about-parter.html">合作伙伴</a></li>
-							<li><a href="page-careers.html">加入ETA</a></li>
+							<li><a href="<?php echo URL::to('company/index'); ?>">ETA公司</a></li>
+							<li><a href="<?php echo URL::to('partner/index'); ?>">合作伙伴</a></li>
+							<li><a href="<?php echo URL::to('career/index'); ?>">加入ETA</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="blog-medium-image.html">新闻发布</a>
+					<li class="<?php if($CCName == 'NewsController'){echo 'active';} ?>">
+						<a href="<?php echo URL::to('news/news-list'); ?>">新闻发布</a>
 					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" href="product.html">
+					<li class="dropdown <?php if($CCName == 'ProductController'){echo 'active';} ?>">
+						<a class="dropdown-toggle" href="<?php echo URL::to('product/index'); ?>">
 							产品与服务
 							<i class="icon icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="">VPG</a></li>
-							<li><a href="">DYNAFORM</a></li>
-							<li><a href="">LS-DYNA</a></li>
-							<li><a href="">DTM</a></li>
-							<li><a href="">3DCS</a></li>
-							<li><a href="">Presys</a></li>
-							<li><a href="">咨询服务</a></li>
-							<li><a href="">培训服务</a></li>
-							<li><a href="">高性能计算</a></li>
+							
+							<?php foreach ($productItem as $key => $value) { ?>
+								<li><a href="<?php echo $value['url']; ?>"><?php echo $value['name']; ?></a></li>
+							<?php } ?>
 						</ul>
 					</li>
-					<li class="dropdown">
-						<a class="dropdown-toggle" href="soft.html">
+					<li class="dropdown <?php if($CCName == 'DownloadController'){echo 'active';} ?>">
+						<a class="dropdown-toggle" href="<?php echo URL::to('download/soft-index'); ?>">
 							支持与下载
 							<i class="icon icon-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="soft.html">软件下载</a></li>
-							<li><a href="">手册下载</a></li>
+							<li><a href="<?php echo URL::to('download/soft-index'); ?>">软件下载</a></li>
+							<li><a href="<?php echo URL::to('download/doc-index'); ?>">手册下载</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="custom.html">行业客户</a>
+					<li class="<?php if($CCName == 'CustomerController'){echo 'active';} ?>">
+						<a href="<?php echo URL::to('customer/index'); ?>">行业客户</a>
 					</li>
 					
 					<li class="dropdown mega-menu-item mega-menu-signin signin" id="headerAccount">

@@ -17,7 +17,20 @@ class NewsController extends BaseController {
 	public function getNewsList()
 	{	
 		//信息列表
+		$this->cVariable['newsData'] = $this->news->getNewsList();
 		return View::make('News.NewsList', $this->cVariable);
+	}
+
+	public function getNewsDetail($id){
+		//current news
+		$this->cVariable['currentNewsData'] = $this->news->getNewsDetail($id);
+		
+		if(empty($this->cVariable['currentNewsData'])){
+			//跳转到首页
+			return Redirect::to("home/index");
+		}
+		//var_dump($this->cVariable['currentNewsData']);
+		return View::make('News.NewsDetail', $this->cVariable);
 	}
 
 
