@@ -26,9 +26,17 @@ class HomeController extends BaseController {
 		//幻灯片
 		$this->cVariable['bannerData'] = $this->home->getBannerData();
 
-		// echo "<pre>";
-		// print_r($this->cVariable['bannerData']);
-		// echo "</pre>";
+		//推荐产品与服务
+		$this->cVariable['psData'] = $this->home->psRecommend();
+
+		//行业客户
+		$this->cVariable['customerData'] = $this->home->getCustomerData();
+
+		//新闻推荐
+		$this->cVariable['newsData'] = $this->home->getNewsData();
+		echo "<pre>";
+		print_r($this->cVariable['newsData']);
+		echo "</pre>";
 		
 		return View::make('HomeIndex', $this->cVariable);
 	}

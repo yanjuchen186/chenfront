@@ -27,3 +27,7 @@ Route::controller("company", "CompanyController");
 Route::controller("partner", "PartnerController");
 
 Route::controller("career", "CareerController");
+
+Route::controller("download", "DownloadController");
+
+Route::controller("news", "NewsController");
